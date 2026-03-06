@@ -25,7 +25,7 @@ export default function KPISection({ data }) {
     { key: 'totalHand', label: 'Handgeschrieben', value: display.totalHand.toFixed(2), icon: <FaFileAlt size={28}/>, description: 'Kosten für Papier, Versand und Arbeitsaufwand für handschriftliche Signaturen. Berechnet als: Dokumente x Signaturen x (Papier + Versand + Arbeitskosten).' },
     { key: 'totalDigital', label: 'Digital', value: display.totalDigital.toFixed(2), icon: <FaPenFancy size={28}/>, description: 'Kosten für elektronische Signaturen inkl. minimalem Arbeitsaufwand. Berechnet als: Dokumente x Signaturen x (Digitale Signaturkosten + Arbeitskosten).' },
     { key: 'timeSaved', label: 'Zeitersparnis', value: display.timeSaved.toFixed(2)+' h', icon: <FaClock size={28}/>, description: 'Gesparte Arbeitszeit durch digitale Signaturen im Vergleich zur handschriftlichen Signatur.' },
-    { key: 'moneySaved', label: 'Geldersparnis', value: display.moneySaved.toFixed(2)+' CHF', icon: <FaMoneyBillWave size={28}/>, description: 'Differenz der Kosten zwischen handschriftlichen und digitalen Signaturen.' },
+    { key: 'moneySaved', label: 'Ersparnis', value: display.moneySaved.toFixed(2)+' CHF', icon: <FaMoneyBillWave size={28}/>, description: 'Differenz der Kosten zwischen handschriftlichen und digitalen Signaturen.' },
     { key: 'co2Saved', label: 'CO₂ Einsparung', value: display.co2Saved.toFixed(2)+' kg', icon: <FaLeaf size={28}/>, description: 'Geschätzte CO₂-Einsparung durch weniger Papierverbrauch und Versand.' }
   ]
 
@@ -46,4 +46,5 @@ export default function KPISection({ data }) {
       ))}
     </div>
   )
+
 }
