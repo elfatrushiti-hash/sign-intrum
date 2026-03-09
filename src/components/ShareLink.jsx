@@ -16,7 +16,7 @@ export default function ShareLink({ data }) {
 
     <button
       onClick={generateLink}
-      className="bg-intrumPurple text-white px-4 py-2 rounded shadow hover:opacity-90"
+      className="bg-bgPurple40 text-white px-4 py-2 rounded shadow hover:opacity-90"
     >
 
       Ergebnis Link kopieren
