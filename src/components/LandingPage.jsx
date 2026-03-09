@@ -9,7 +9,7 @@ export default function LandingPage({ start }) {
         SIGN Impact Calculator
       </h1>
 
-      <p className="max-w-xl mb-8">
+      <p className="max-w-xl mb-8 text-center">
         Berechnen Sie in wenigen Sekunden, wie viel Zeit, Kosten und CO₂
         Ihr Unternehmen mit digitalen Signaturen sparen kann.
       </p>
