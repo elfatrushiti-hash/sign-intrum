@@ -33,10 +33,11 @@ export default function ImpactScore({ data }) {
   }
 
   return (
-    <div className={`p-6 rounded-lg shadow text-black text-center bg-bgPurple20`}>
+    <div className={`p-6 rounded-lg shadow text-black text-center bg-bgPurple40`}>
       <p className="text-sm mb-2 font-medium">SIGN Impact Score</p>
       <p className="text-4xl font-bold">{animatedScore} / 100</p>
       <p className="text-sm mt-2">zeigt den Gesamteffekt von Zeit-, Kosten- und CO₂-Einsparungen</p>
     </div>
   )
 }
+
