@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import LandingPage from "./components/LandingPage"
 import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
@@ -29,92 +29,61 @@ export default function App() {
 
   const [started, setStarted] = useState(false)
 
+  // LandingPage starten oder Share-Link auslesen
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("docs")) {
+      setStarted(true)
+      setImpactData({
+        docs: Number(params.get("docs")),
+        signs: Number(params.get("signs")),
+        totalHand: Number(params.get("totalHand")),
+        totalDigital: Number(params.get("totalDigital")),
+        timeSaved: Number(params.get("timeSaved")),
+        moneySaved: Number(params.get("moneySaved")),
+        co2Saved: Number(params.get("co2Saved")),
+      })
+    }
+  }, [])
+
   // LandingPage starten
-  if(!started){
-    return <LandingPage start={() => setStarted(true)} />
-  }
+  if (!started) return <LandingPage start={() => setStarted(true)} />
 
   return (
     <AdminMode>
       <div className="bg-[#F1E8FA] min-h-screen">
-
         <Hero />
 
-<section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
-  <ReportHeader />
+        <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <Calculator impactData={impactData} setImpactData={setImpactData} />
-    <ChartsSection data={impactData} />
-    <KPISection data={impactData} />
-  </div>
+          {/* Seite 1: Report Header + KPI + Scores */}
+          <ReportHeader />
+          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <KPISection data={impactData} />
+            <ImpactScore data={impactData} />
+            <CO2Counter data={impactData} />
+          </div>
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-    <ImpactScore data={impactData} />
-    <CO2Counter data={impactData} />
-    <PDFExport />
-  </div>
+          {/* Page Break für PDF */}
+          <div className="page-break"></div>
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-    <ROISimulator data={impactData} />
-    <Benchmark data={impactData} />
-    <ShareLink data={impactData} />
-  </div>
+          {/* Seite 2: Charts */}
+          <div className="dashboard-section">
+            <ChartsSection data={impactData} />
+            <CO2Chart data={impactData} />
+            <AdvancedImpactChart data={impactData} />
+          </div>
 
-  <div className="dashboard-section mt-6">
-    <CO2Chart data={impactData} />
-    <AdvancedImpactChart data={impactData} />
-  </div>
-</section>
+          {/* PDF Export + Share Link */}
+          <div className="dashboard-section mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <PDFExport />
+            <ShareLink impactData={impactData} />
+          </div>
+
+        </section>
+
+        <Footer />
       </div>
     </AdminMode>
-  )}, [])
-import { useEffect, useState } from "react"
-
-export default function App() {
-  const [started, setStarted] = useState(false)
-
-  // Query aus URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.get("docs")) {
-      setStarted(true) // direkt Dashboard anzeigen
-      // Hier kannst du auch impactData aus den Params setzen
-    }
-  }, [])
-import React from "react"
-
-export default function ShareLink({ impactData }) {
-
-  const copyLink = () => {
-    const params = new URLSearchParams(impactData).toString()
-    const link = `${window.location.origin}/?${params}`
-
-    navigator.clipboard.writeText(link)
-      .then(() => alert("Link zum Dashboard kopiert!"))
-      .catch(() => alert("Kopieren fehlgeschlagen"))
-  }
-  return (
-    <div className="bg-white p-4 rounded-lg shadow flex items-center justify-between cursor-pointer" onClick={copyLink}>
-      <span className="font-semibold text-[#8750E5]">Ergebnis Link kopieren</span>
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16h8m-8-4h8m-8-4h8" />
-      </svg>
-    </div>
   )
-}, [])
-useEffect(() => {
-  const params = new URLSearchParams(window.location.search)
-  if (params.get("docs")) {
-    setStarted(true)
-    setImpactData({
-      docs: Number(params.get("docs")),
-      signs: Number(params.get("signs")),
-      totalHand: Number(params.get("totalHand")),
-      totalDigital: Number(params.get("totalDigital")),
-      timeSaved: Number(params.get("timeSaved")),
-      moneySaved: Number(params.get("moneySaved")),
-      co2Saved: Number(params.get("co2Saved")),
-    })
-  }
-}, [])
+}
