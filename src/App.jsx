@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import LandingPage from "./components/LandingPage"
 import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
+import SalesInfoCard from "./components/SalesInfoCard"
 import KPISection from "./components/KPISection"
 import ChartsSection from "./components/ChartsSection"
 import CO2Chart from "./components/CO2Chart"
@@ -54,32 +55,43 @@ export default function App() {
       <div className="bg-[#F1E8FA] min-h-screen">
         <Hero />
 
-      <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
-  <ReportHeader />
+        <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
-    <Calculator impactData={impactData} setImpactData={setImpactData} />
-    <ChartsSection data={impactData} />
-    <KPISection data={impactData} />
-  </div>
+          {/* Seite 1: Report Header + KPI + Scores */}
+          <ReportHeader />
+          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-    <ImpactScore data={impactData} />
-    <CO2Counter data={impactData} />
-    <PDFExport />
-  </div>
+            {/* Linke Spalte: Calculator + SalesInfoCard */}
+            <div className="flex flex-col gap-6">
+              <Calculator impactData={impactData} setImpactData={setImpactData} />
+              <SalesInfoCard />
+            </div>
 
-  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-    <ROISimulator data={impactData} />
-    <Benchmark data={impactData} />
-    <ShareLink data={impactData} />
-  </div>
+            {/* Mittlere Spalte: Charts */}
+            <ChartsSection data={impactData} />
 
-  <div className="dashboard-section mt-6">
-    <CO2Chart data={impactData} />
-    <AdvancedImpactChart data={impactData} />
-  </div>
-</section>
+            {/* Rechte Spalte: KPI */}
+            <KPISection data={impactData} />
+
+          </div>
+
+          {/* Page Break für PDF */}
+          <div className="page-break"></div>
+
+          {/* Seite 2: Charts */}
+          <div className="dashboard-section">
+            <CO2Chart data={impactData} />
+            <AdvancedImpactChart data={impactData} />
+          </div>
+
+          {/* PDF Export + ShareLink */}
+          <div className="dashboard-section mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <PDFExport />
+            <ShareLink impactData={impactData} />
+          </div>
+
+        </section>
+
         <Footer />
       </div>
     </AdminMode>
