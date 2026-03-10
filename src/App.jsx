@@ -4,21 +4,22 @@ import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
 import SalesInfoCard from "./components/SalesInfoCard"
 import KPISection from "./components/KPISection"
+import ChartsSection from "./components/ChartsSection"
+import CO2Chart from "./components/CO2Chart"
 import ImpactScore from "./components/ImpactScore"
 import CO2Counter from "./components/CO2Counter"
 import Comparison from "./components/Comparison"
-import ChartsSection from "./components/ChartsSection"
-import CO2Chart from "./components/CO2Chart"
-import AdvancedImpactChart from "./components/AdvancedImpactChart"
+import PDFExport from "./components/PDFExport"
 import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
 import ShareLink from "./components/ShareLink"
-import PDFExport from "./components/PDFExport"
+import AdvancedImpactChart from "./components/AdvancedImpactChart"
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
 import ReportHeader from "./components/ReportHeader"
 
 export default function App() {
+
   const [impactData, setImpactData] = useState({
     docs: 10,
     signs: 2,
@@ -33,8 +34,10 @@ export default function App() {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
+
     if (params.get("docs")) {
       setStarted(true)
+
       setImpactData({
         docs: Number(params.get("docs")),
         signs: Number(params.get("signs")),
@@ -47,56 +50,70 @@ export default function App() {
     }
   }, [])
 
-  if (!started) return <LandingPage start={() => setStarted(true)} />
+  if (!started) {
+    return <LandingPage start={() => setStarted(true)} />
+  }
 
   return (
     <AdminMode>
+
       <div className="bg-[#F1E8FA] min-h-screen">
+
         <Hero />
 
         <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
+
           <ReportHeader />
 
-          {/* === Dashboard Unit === */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
+          {/* Haupt Dashboard */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {/* Linke Spalte: Calculator + SalesInfoCard */}
-            <div className="grid grid-rows-2 gap-6 h-full">
-              <Calculator />
+            {/* Links */}
+            <div className="flex flex-col gap-6">
+              <Calculator
+                impactData={impactData}
+                setImpactData={setImpactData}
+              />
+
               <SalesInfoCard />
             </div>
 
-            {/* Mittlere Spalte: Charts */}
-            <div className="grid grid-rows-3 gap-6 h-full">
-              <ChartsSection />
-              <CO2Chart />
-              <AdvancedImpactChart />
+            {/* Mitte */}
+            <div className="flex flex-col gap-6">
+              <ChartsSection data={impactData}/>
+              <CO2Chart data={impactData}/>
+              <AdvancedImpactChart data={impactData}/>
             </div>
 
-            {/* Rechte Spalte: KPI Cards */}
-            <div className="grid grid-rows-4 gap-6 h-full">
-              <ImpactScore />
-              <CO2Counter />
-              <Comparison />
-              <KPISection />
+            {/* Rechts */}
+            <div className="flex flex-col gap-6">
+              <KPISection data={impactData}/>
+              <ImpactScore data={impactData}/>
+              <CO2Counter data={impactData}/>
+              <Comparison data={impactData}/>
             </div>
 
           </div>
 
-          {/* === Tools / Export Section === */}
+          {/* Tools */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
-            <ROISimulator data={impactData} />
-            <Benchmark data={impactData} />
+
+            <ROISimulator data={impactData}/>
+            <Benchmark data={impactData}/>
+
             <div className="flex flex-col gap-6">
-              <PDFExport />
-              <ShareLink impactData={impactData} />
+              <PDFExport data={impactData}/>
+              <ShareLink impactData={impactData}/>
             </div>
+
           </div>
 
         </section>
 
         <Footer />
+
       </div>
+
     </AdminMode>
   )
 }
