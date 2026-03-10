@@ -81,6 +81,7 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             {/* LEFT */}
+
             <div className="flex flex-col gap-6">
 
               <Calculator
@@ -93,11 +94,8 @@ export default function App() {
             </div>
 
             {/* CENTER */}
-            <div>
 
-              <ChartsSection data={impactData}/>
-
-            </div>
+            <ChartsSection data={impactData}/>
 
             {/* RIGHT */}
 
