@@ -60,27 +60,27 @@ export default function App() {
           <ReportHeader />
 
           {/* Main Grid: Calculator | Charts | KPI */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
 
             {/* Linke Spalte: Calculator + SalesInfoCard */}
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 h-full">
               <Calculator impactData={impactData} setImpactData={setImpactData} className="flex-1" />
-              <SalesInfoCard />
+              <SalesInfoCard className="flex-1" />
             </div>
 
             {/* Mittlere Spalte: Charts */}
-            <div className="flex flex-col gap-6">
-              <ChartsSection data={impactData} />
-              <CO2Chart data={impactData} />
-              <AdvancedImpactChart data={impactData} />
+            <div className="flex flex-col gap-6 h-full">
+              <ChartsSection data={impactData} className="flex-1" />
+              <CO2Chart data={impactData} className="flex-1" />
+              <AdvancedImpactChart data={impactData} className="flex-1" />
             </div>
 
             {/* Rechte Spalte: KPI + ImpactScore + CO2Counter + Comparison */}
-            <div className="flex flex-col gap-6">
-              <KPISection data={impactData} />
-              <ImpactScore data={impactData} />
-              <CO2Counter data={impactData} />
-              <Comparison data={impactData} />
+            <div className="flex flex-col gap-6 h-full">
+              <KPISection data={impactData} className="flex-1" />
+              <ImpactScore data={impactData} className="flex-1" />
+              <CO2Counter data={impactData} className="flex-1" />
+              <Comparison data={impactData} className="flex-1" />
             </div>
 
           </div>
