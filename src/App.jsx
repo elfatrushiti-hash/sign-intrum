@@ -94,5 +94,19 @@ export default function App() {
       setStarted(true) // direkt Dashboard anzeigen
       // Hier kannst du auch impactData aus den Params setzen
     }
-  }, [])
-
+  }
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search)
+  if (params.get("docs")) {
+    setStarted(true)
+    setImpactData({
+      docs: Number(params.get("docs")),
+      signs: Number(params.get("signs")),
+      totalHand: Number(params.get("totalHand")),
+      totalDigital: Number(params.get("totalDigital")),
+      timeSaved: Number(params.get("timeSaved")),
+      moneySaved: Number(params.get("moneySaved")),
+      co2Saved: Number(params.get("co2Saved")),
+    })
+  }
+}, [])
