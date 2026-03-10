@@ -54,33 +54,32 @@ export default function App() {
       <div className="bg-[#F1E8FA] min-h-screen">
         <Hero />
 
-        <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
+      <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
+  <ReportHeader />
 
-          {/* Seite 1: Report Header + KPI + Scores */}
-          <ReportHeader />
-          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
-            <KPISection data={impactData} />
-            <ImpactScore data={impactData} />
-            <CO2Counter data={impactData} />
-          </div>
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <Calculator impactData={impactData} setImpactData={setImpactData} />
+    <ChartsSection data={impactData} />
+    <KPISection data={impactData} />
+  </div>
 
-          {/* Page Break für PDF */}
-          <div className="page-break"></div>
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <ImpactScore data={impactData} />
+    <CO2Counter data={impactData} />
+    <PDFExport />
+  </div>
 
-          {/* Seite 2: Charts */}
-          <div className="dashboard-section">
-            <ChartsSection data={impactData} />
-            <CO2Chart data={impactData} />
-            <AdvancedImpactChart data={impactData} />
-          </div>
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <ROISimulator data={impactData} />
+    <Benchmark data={impactData} />
+    <ShareLink data={impactData} />
+  </div>
 
-          {/* PDF Export + Share Link */}
-          <div className="dashboard-section mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <PDFExport />
-            <ShareLink impactData={impactData} />
-          </div>
-
-        </section>
+  <div className="dashboard-section mt-6">
+    <CO2Chart data={impactData} />
+    <AdvancedImpactChart data={impactData} />
+  </div>
+</section>
 
         <Footer />
       </div>
