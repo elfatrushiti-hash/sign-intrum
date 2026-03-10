@@ -61,24 +61,24 @@ export default function App() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
 
             {/* Linke Spalte: Calculator + SalesInfoCard */}
-            <div className="flex flex-col gap-6 h-full">
-              <Calculator impactData={impactData} setImpactData={setImpactData} className="flex-1"/>
-              <SalesInfoCard className="flex-1"/>
+            <div className="grid grid-rows-2 gap-6 h-full">
+              <Calculator />
+              <SalesInfoCard />
             </div>
 
             {/* Mittlere Spalte: Charts */}
-            <div className="flex flex-col gap-6 h-full">
-              <ChartsSection data={impactData} className="flex-1"/>
-              <CO2Chart data={impactData} className="flex-1"/>
-              <AdvancedImpactChart data={impactData} className="flex-1"/>
+            <div className="grid grid-rows-3 gap-6 h-full">
+              <ChartsSection />
+              <CO2Chart />
+              <AdvancedImpactChart />
             </div>
 
             {/* Rechte Spalte: KPI Cards */}
-            <div className="flex flex-col gap-6 h-full">
-              <KPISection data={impactData} className="flex-1"/>
-              <ImpactScore data={impactData} className="flex-1"/>
-              <CO2Counter data={impactData} className="flex-1"/>
-              <Comparison data={impactData} className="flex-1"/>
+            <div className="grid grid-rows-4 gap-6 h-full">
+              <ImpactScore />
+              <CO2Counter />
+              <Comparison />
+              <KPISection />
             </div>
 
           </div>
