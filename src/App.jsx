@@ -80,21 +80,6 @@ export default function App() {
     <AdvancedImpactChart data={impactData} />
   </div>
 </section>
-<div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-  {/* Calculator + Sales Info Kachel in der gleichen Spalte */}
-  <div className="flex flex-col gap-6">
-    <Calculator impactData={impactData} setImpactData={setImpactData} />
-    <SalesInfoCard />
-  </div>
-
-  {/* Charts in der mittleren Spalte */}
-  <ChartsSection data={impactData} />
-
-  {/* KPI Section rechts */}
-  <KPISection data={impactData} />
-
-</div>
         <Footer />
       </div>
     </AdminMode>
