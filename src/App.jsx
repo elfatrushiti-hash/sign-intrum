@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import LandingPage from "./components/LandingPage"
 import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
@@ -14,6 +14,7 @@ import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
 import ShareLink from "./components/ShareLink"
 import PDFExport from "./components/PDFExport"
+import EqualHeightWrapper from "./components/EqualHeightWrapper"
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
 import ReportHeader from "./components/ReportHeader"
@@ -30,6 +31,7 @@ export default function App() {
   })
 
   const [started, setStarted] = useState(false)
+  const chartRef = useRef()
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -61,14 +63,14 @@ export default function App() {
           {/* Main Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {/* Linke Spalte */}
-            <div className="flex flex-col gap-6">
+            {/* Linke Spalte: Calculator + SalesInfoCard */}
+            <EqualHeightWrapper referenceRef={chartRef}>
               <Calculator impactData={impactData} setImpactData={setImpactData} />
               <SalesInfoCard />
-            </div>
+            </EqualHeightWrapper>
 
-            {/* Mittlere Spalte */}
-            <div className="flex flex-col gap-6">
+            {/* Mittlere Spalte: Charts */}
+            <div ref={chartRef} className="flex flex-col gap-6">
               <ChartsSection data={impactData} />
               <CO2Chart data={impactData} />
               <AdvancedImpactChart data={impactData} />
