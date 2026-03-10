@@ -10,3 +10,27 @@ body {
 h1,h2,h3,h4,h5,h6 {
   color: #111827;
 }
+@media print {
+  body {
+    background: white !important;
+  }
+  button {
+    display: none !important;
+  }
+  footer {
+    display: none !important;
+  }
+  .print\:block {
+    display: block;
+  }
+  .hidden {
+    display: none;
+  }
+  #dashboard {
+    padding: 30px;
+  }
+  /* Seitenumbrüche für Charts */
+  .page-break {
+    page-break-before: always;
+  }
+}
