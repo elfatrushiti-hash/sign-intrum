@@ -69,7 +69,7 @@ export default function App() {
           </div>
 
         </section>
-
+<section id="dashboard"> </section>
         <Footer />
 
       </div>
