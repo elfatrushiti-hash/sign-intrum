@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import LandingPage from "./components/LandingPage"
 import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
@@ -14,7 +14,6 @@ import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
 import ShareLink from "./components/ShareLink"
 import PDFExport from "./components/PDFExport"
-import EqualHeightWrapper from "./components/EqualHeightWrapper"
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
 import ReportHeader from "./components/ReportHeader"
@@ -31,7 +30,6 @@ export default function App() {
   })
 
   const [started, setStarted] = useState(false)
-  const chartRef = useRef()
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
@@ -57,36 +55,35 @@ export default function App() {
         <Hero />
 
         <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
-
           <ReportHeader />
 
-          {/* Main Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* === Dashboard Unit === */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
 
             {/* Linke Spalte: Calculator + SalesInfoCard */}
-            <EqualHeightWrapper referenceRef={chartRef}>
-              <Calculator impactData={impactData} setImpactData={setImpactData} />
-              <SalesInfoCard />
-            </EqualHeightWrapper>
-
-            {/* Mittlere Spalte: Charts */}
-            <div ref={chartRef} className="flex flex-col gap-6">
-              <ChartsSection data={impactData} />
-              <CO2Chart data={impactData} />
-              <AdvancedImpactChart data={impactData} />
+            <div className="flex flex-col gap-6 h-full">
+              <Calculator impactData={impactData} setImpactData={setImpactData} className="flex-1"/>
+              <SalesInfoCard className="flex-1"/>
             </div>
 
-            {/* Rechte Spalte */}
-            <div className="flex flex-col gap-6">
-              <KPISection data={impactData} />
-              <ImpactScore data={impactData} />
-              <CO2Counter data={impactData} />
-              <Comparison data={impactData} />
+            {/* Mittlere Spalte: Charts */}
+            <div className="flex flex-col gap-6 h-full">
+              <ChartsSection data={impactData} className="flex-1"/>
+              <CO2Chart data={impactData} className="flex-1"/>
+              <AdvancedImpactChart data={impactData} className="flex-1"/>
+            </div>
+
+            {/* Rechte Spalte: KPI Cards */}
+            <div className="flex flex-col gap-6 h-full">
+              <KPISection data={impactData} className="flex-1"/>
+              <ImpactScore data={impactData} className="flex-1"/>
+              <CO2Counter data={impactData} className="flex-1"/>
+              <Comparison data={impactData} className="flex-1"/>
             </div>
 
           </div>
 
-          {/* Tools / Export */}
+          {/* === Tools / Export Section === */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
             <ROISimulator data={impactData} />
             <Benchmark data={impactData} />
