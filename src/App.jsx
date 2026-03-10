@@ -4,15 +4,16 @@ import Hero from "./components/Hero"
 import Calculator from "./components/Calculator"
 import SalesInfoCard from "./components/SalesInfoCard"
 import KPISection from "./components/KPISection"
-import ChartsSection from "./components/ChartsSection"
-import CO2Chart from "./components/CO2Chart"
 import ImpactScore from "./components/ImpactScore"
 import CO2Counter from "./components/CO2Counter"
-import PDFExport from "./components/PDFExport"
+import ChartsSection from "./components/ChartsSection"
+import CO2Chart from "./components/CO2Chart"
+import AdvancedImpactChart from "./components/AdvancedImpactChart"
+import Comparison from "./components/Comparison"
 import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
 import ShareLink from "./components/ShareLink"
-import AdvancedImpactChart from "./components/AdvancedImpactChart"
+import PDFExport from "./components/PDFExport"
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
 import ReportHeader from "./components/ReportHeader"
@@ -47,7 +48,6 @@ export default function App() {
     }
   }, [])
 
-  // LandingPage starten
   if (!started) return <LandingPage start={() => setStarted(true)} />
 
   return (
@@ -57,8 +57,10 @@ export default function App() {
 
         <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
 
-          {/* Seite 1: Report Header + KPI + Scores */}
+          {/* Report Header */}
           <ReportHeader />
+
+          {/* Main Grid: Calculator + Charts + KPI */}
           <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             {/* Linke Spalte: Calculator + SalesInfoCard */}
@@ -68,26 +70,33 @@ export default function App() {
             </div>
 
             {/* Mittlere Spalte: Charts */}
-            <ChartsSection data={impactData} />
+            <div className="flex flex-col gap-6">
+              <ChartsSection data={impactData} />
+              <CO2Chart data={impactData} />
+              <AdvancedImpactChart data={impactData} />
+            </div>
 
-            {/* Rechte Spalte: KPI */}
-            <KPISection data={impactData} />
+            {/* Rechte Spalte: KPI + Comparison */}
+            <div className="flex flex-col gap-6">
+              <KPISection data={impactData} />
+              <ImpactScore data={impactData} />
+              <CO2Counter data={impactData} />
+              <Comparison data={impactData} />
+            </div>
 
           </div>
 
           {/* Page Break für PDF */}
           <div className="page-break"></div>
 
-          {/* Seite 2: Charts */}
-          <div className="dashboard-section">
-            <CO2Chart data={impactData} />
-            <AdvancedImpactChart data={impactData} />
-          </div>
-
-          {/* PDF Export + ShareLink */}
-          <div className="dashboard-section mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <PDFExport />
-            <ShareLink impactData={impactData} />
+          {/* Tools & Export */}
+          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+            <ROISimulator data={impactData} />
+            <Benchmark data={impactData} />
+            <div className="flex flex-col gap-6">
+              <PDFExport />
+              <ShareLink impactData={impactData} />
+            </div>
           </div>
 
         </section>
