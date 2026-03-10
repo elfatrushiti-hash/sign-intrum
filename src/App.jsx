@@ -68,7 +68,7 @@ export default function App() {
 </section>
       </div>
     </AdminMode>
-  )}
+  )}, [])
 import { useEffect, useState } from "react"
 
 export default function App() {
@@ -81,20 +81,28 @@ export default function App() {
       setStarted(true) // direkt Dashboard anzeigen
       // Hier kannst du auch impactData aus den Params setzen
     }
-  }
-  import { useEffect, useState } from "react"
+  }, [])
+import React from "react"
 
-export default function App() {
-  const [started, setStarted] = useState(false)
+export default function ShareLink({ impactData }) {
 
-  // Query aus URL
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search)
-    if (params.get("docs")) {
-      setStarted(true) // direkt Dashboard anzeigen
-      // Hier kannst du auch impactData aus den Params setzen
-    }
+  const copyLink = () => {
+    const params = new URLSearchParams(impactData).toString()
+    const link = `${window.location.origin}/?${params}`
+
+    navigator.clipboard.writeText(link)
+      .then(() => alert("Link zum Dashboard kopiert!"))
+      .catch(() => alert("Kopieren fehlgeschlagen"))
   }
+  return (
+    <div className="bg-white p-4 rounded-lg shadow flex items-center justify-between cursor-pointer" onClick={copyLink}>
+      <span className="font-semibold text-[#8750E5]">Ergebnis Link kopieren</span>
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16h8m-8-4h8m-8-4h8" />
+      </svg>
+    </div>
+  )
+}, [])
 useEffect(() => {
   const params = new URLSearchParams(window.location.search)
   if (params.get("docs")) {
