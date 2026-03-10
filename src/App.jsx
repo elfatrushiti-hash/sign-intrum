@@ -41,28 +41,30 @@ export default function App() {
         <Hero />
 
 <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
+  <ReportHeader />
 
-  {/* Seite 1: Report Header + KPI */}
-  <div className="dashboard-section">
-    <ReportHeader />
-
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <KPISection data={impactData} />
-      <ImpactScore data={impactData} />
-      <CO2Counter data={impactData} />
-    </div>
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <Calculator impactData={impactData} setImpactData={setImpactData} />
+    <ChartsSection data={impactData} />
+    <KPISection data={impactData} />
   </div>
 
-  {/* Page Break */}
-  <div className="page-break"></div>
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <ImpactScore data={impactData} />
+    <CO2Counter data={impactData} />
+    <PDFExport />
+  </div>
 
-  {/* Seite 2: Charts */}
-  <div className="dashboard-section">
-    <ChartsSection data={impactData} />
+  <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+    <ROISimulator data={impactData} />
+    <Benchmark data={impactData} />
+    <ShareLink data={impactData} />
+  </div>
+
+  <div className="dashboard-section mt-6">
     <CO2Chart data={impactData} />
     <AdvancedImpactChart data={impactData} />
   </div>
-
 </section>
       </div>
     </AdminMode>
