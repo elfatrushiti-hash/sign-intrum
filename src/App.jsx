@@ -1,19 +1,27 @@
 import React, { useState, useEffect } from "react"
+
 import LandingPage from "./components/LandingPage"
 import Hero from "./components/Hero"
+
 import Calculator from "./components/Calculator"
 import SalesInfoCard from "./components/SalesInfoCard"
-import KPISection from "./components/KPISection"
+
 import ChartsSection from "./components/ChartsSection"
-import CO2Chart from "./components/CO2Chart"
+
 import ImpactScore from "./components/ImpactScore"
 import CO2Counter from "./components/CO2Counter"
 import Comparison from "./components/Comparison"
-import PDFExport from "./components/PDFExport"
+import KPISection from "./components/KPISection"
+
+import CO2Chart from "./components/CO2Chart"
+import AdvancedImpactChart from "./components/AdvancedImpactChart"
+
 import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
+
 import ShareLink from "./components/ShareLink"
-import AdvancedImpactChart from "./components/AdvancedImpactChart"
+import PDFExport from "./components/PDFExport"
+
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
 import ReportHeader from "./components/ReportHeader"
@@ -33,9 +41,11 @@ export default function App() {
   const [started, setStarted] = useState(false)
 
   useEffect(() => {
+
     const params = new URLSearchParams(window.location.search)
 
     if (params.get("docs")) {
+
       setStarted(true)
 
       setImpactData({
@@ -47,63 +57,83 @@ export default function App() {
         moneySaved: Number(params.get("moneySaved")),
         co2Saved: Number(params.get("co2Saved")),
       })
+
     }
+
   }, [])
 
-  if (!started) {
-    return <LandingPage start={() => setStarted(true)} />
-  }
+  if (!started) return <LandingPage start={() => setStarted(true)} />
 
   return (
+
     <AdminMode>
 
       <div className="bg-[#F1E8FA] min-h-screen">
 
         <Hero />
 
-        <section className="max-w-7xl mx-auto px-4 py-6" id="dashboard">
+        <section className="max-w-7xl mx-auto px-4 py-6">
 
           <ReportHeader />
 
-          {/* Haupt Dashboard */}
+          {/* PRIMARY DASHBOARD */}
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-            {/* Links */}
+            {/* LEFT */}
             <div className="flex flex-col gap-6">
+
               <Calculator
                 impactData={impactData}
                 setImpactData={setImpactData}
               />
 
               <SalesInfoCard />
+
             </div>
 
-            {/* Mitte */}
-            <div className="flex flex-col gap-6">
+            {/* CENTER */}
+            <div>
+
               <ChartsSection data={impactData}/>
-              <CO2Chart data={impactData}/>
-              <AdvancedImpactChart data={impactData}/>
+
             </div>
 
-            {/* Rechts */}
-            <div className="flex flex-col gap-6">
-              <KPISection data={impactData}/>
+            {/* RIGHT */}
+
+            <div className="grid grid-cols-2 gap-6">
+
               <ImpactScore data={impactData}/>
               <CO2Counter data={impactData}/>
+
               <Comparison data={impactData}/>
+              <KPISection data={impactData}/>
+
             </div>
 
           </div>
 
-          {/* Tools */}
+          {/* CHARTS */}
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
+
+            <CO2Chart data={impactData}/>
+            <AdvancedImpactChart data={impactData}/>
+
+          </div>
+
+          {/* TOOLS */}
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
 
             <ROISimulator data={impactData}/>
             <Benchmark data={impactData}/>
 
             <div className="flex flex-col gap-6">
+
               <PDFExport data={impactData}/>
               <ShareLink impactData={impactData}/>
+
             </div>
 
           </div>
@@ -115,5 +145,6 @@ export default function App() {
       </div>
 
     </AdminMode>
+
   )
 }
