@@ -6,6 +6,9 @@ export default function PDFExport() {
     const originalTitle = document.title
     document.title = "SIGN Impact Report"
 
+    // Optional: scroll to top, damit PDF immer oben startet
+    window.scrollTo(0, 0)
+
     // Browser Print Dialog öffnen
     window.print()
 
@@ -13,7 +16,7 @@ export default function PDFExport() {
   }
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-center">
+    <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-center dashboard-section">
       <h3 className="text-lg font-bold mb-4 text-[#8750E5]">
         SIGN Impact Report
       </h3>
