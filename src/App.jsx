@@ -14,6 +14,7 @@ import ShareLink from "./components/ShareLink"
 import AdvancedImpactChart from "./components/AdvancedImpactChart"
 import AdminMode from "./components/AdminMode"
 import Footer from "./components/Footer"
+import ReportHeader from "./components/ReportHeader"
 
 export default function App() {
   const [impactData, setImpactData] = useState({
@@ -68,9 +69,10 @@ export default function App() {
             <AdvancedImpactChart data={impactData} />
           </div>
 
+        <section id="dashboard">
+           <ReportHeader />
+            {/* Rest Dashboard */}
         </section>
-<section id="dashboard"> </section>
-        <Footer />
 
       </div>
     </AdminMode>
