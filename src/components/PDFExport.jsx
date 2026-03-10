@@ -6,10 +6,9 @@ export default function PDFExport() {
     const originalTitle = document.title
     document.title = "SIGN Impact Report"
 
-    // Optional: scroll to top, damit PDF immer oben startet
+    // Scroll to top
     window.scrollTo(0, 0)
 
-    // Browser Print Dialog öffnen
     window.print()
 
     document.title = originalTitle
@@ -18,12 +17,11 @@ export default function PDFExport() {
   return (
     <div className="bg-white p-6 rounded-lg shadow flex flex-col justify-center dashboard-section">
       <h3 className="text-lg font-bold mb-4 text-[#8750E5]">
-        SIGN Impact Report
+        SIGN Impact Executive Report
       </h3>
 
       <p className="text-sm text-gray-600 mb-4">
-        Exportieren Sie die komplette Analyse inklusive Charts,
-        KPI und Einsparungen als PDF Report.
+        Kompakte Übersicht aller KPI, Impact Scores und Charts auf 2 Seiten.
       </p>
 
       <button
