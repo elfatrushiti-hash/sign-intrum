@@ -14,15 +14,11 @@ h1,h2,h3,h4,h5,h6 {
 
   body {
     background: white !important;
-    color: #000; /* Standardtextfarbe */
+    color: #000;
     font-family: 'Inter', sans-serif;
   }
 
-  button {
-    display: none !important;
-  }
-
-  footer, nav {
+  button, footer, nav {
     display: none !important;
   }
 
@@ -30,35 +26,27 @@ h1,h2,h3,h4,h5,h6 {
     padding: 20px;
   }
 
-  /* Dashboard Sections */
   .dashboard-section {
-    page-break-inside: avoid; /* Keine Trennung von wichtigen Komponenten */
-    margin-bottom: 20px;
+    page-break-inside: avoid;
+    margin-bottom: 15px;
   }
 
-  /* Überschriften für PDF */
-  h1, h2, h3, h4, h5, h6 {
-    color: #29074A; /* Intrum Dark Purple */
-  }
-
-  /* Charts skalieren */
-  canvas, svg {
-    max-width: 100% !important;
-    height: auto !important;
-  }
-
-  /* KPI Cards */
   .kpi-card {
     page-break-inside: avoid;
   }
 
-  /* Seitenumbruch für neue Sections */
+  /* Seitenumbruch für Seite 2 */
   .page-break {
     page-break-before: always;
   }
 
   .report-header {
     display: block !important;
+    margin-bottom: 10px;
   }
 
+  canvas, svg {
+    max-width: 100% !important;
+    height: auto !important;
+  }
 }
