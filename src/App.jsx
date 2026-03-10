@@ -68,5 +68,31 @@ export default function App() {
 </section>
       </div>
     </AdminMode>
-  )
-}
+  )}
+import { useEffect, useState } from "react"
+
+export default function App() {
+  const [started, setStarted] = useState(false)
+
+  // Query aus URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("docs")) {
+      setStarted(true) // direkt Dashboard anzeigen
+      // Hier kannst du auch impactData aus den Params setzen
+    }
+  }
+  import { useEffect, useState } from "react"
+
+export default function App() {
+  const [started, setStarted] = useState(false)
+
+  // Query aus URL
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    if (params.get("docs")) {
+      setStarted(true) // direkt Dashboard anzeigen
+      // Hier kannst du auch impactData aus den Params setzen
+    }
+  }, [])
+
