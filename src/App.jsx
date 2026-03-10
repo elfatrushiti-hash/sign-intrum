@@ -6,10 +6,10 @@ import SalesInfoCard from "./components/SalesInfoCard"
 import KPISection from "./components/KPISection"
 import ImpactScore from "./components/ImpactScore"
 import CO2Counter from "./components/CO2Counter"
+import Comparison from "./components/Comparison"
 import ChartsSection from "./components/ChartsSection"
 import CO2Chart from "./components/CO2Chart"
 import AdvancedImpactChart from "./components/AdvancedImpactChart"
-import Comparison from "./components/Comparison"
 import ROISimulator from "./components/ROISimulator"
 import Benchmark from "./components/Benchmark"
 import ShareLink from "./components/ShareLink"
@@ -31,7 +31,6 @@ export default function App() {
 
   const [started, setStarted] = useState(false)
 
-  // LandingPage starten oder Share-Link auslesen
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     if (params.get("docs")) {
@@ -60,12 +59,12 @@ export default function App() {
           {/* Report Header */}
           <ReportHeader />
 
-          {/* Main Grid: Calculator + Charts + KPI */}
-          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6">
+          {/* Main Grid: Calculator | Charts | KPI */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
             {/* Linke Spalte: Calculator + SalesInfoCard */}
             <div className="flex flex-col gap-6">
-              <Calculator impactData={impactData} setImpactData={setImpactData} />
+              <Calculator impactData={impactData} setImpactData={setImpactData} className="flex-1" />
               <SalesInfoCard />
             </div>
 
@@ -76,7 +75,7 @@ export default function App() {
               <AdvancedImpactChart data={impactData} />
             </div>
 
-            {/* Rechte Spalte: KPI + Comparison */}
+            {/* Rechte Spalte: KPI + ImpactScore + CO2Counter + Comparison */}
             <div className="flex flex-col gap-6">
               <KPISection data={impactData} />
               <ImpactScore data={impactData} />
@@ -89,8 +88,8 @@ export default function App() {
           {/* Page Break für PDF */}
           <div className="page-break"></div>
 
-          {/* Tools & Export */}
-          <div className="dashboard-section grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          {/* Tools: ROISimulator, Benchmark, PDFExport + ShareLink */}
+          <div className="dashboard-section mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
             <ROISimulator data={impactData} />
             <Benchmark data={impactData} />
             <div className="flex flex-col gap-6">
