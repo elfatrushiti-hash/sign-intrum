@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #F1E8FA;
+}
+
+/* Landing Page */
+.landing {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #8750E5;
+  color: white;
+  text-align: center;
+}
+.landing-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+.landing-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+.landing-content button {
+  background: #FFFFFF;
+  color: #8750E5;
+  padding: 12px 30px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s all ease;
+}
+.landing-content button:hover {
+  background: #C9B0EF;
+  color: #FFFFFF;
+}
+
+/* Dashboard Grid */
+.dashboard {
+  padding: 40px 20px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+@media(min-width: 1024px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+.grid-left, .grid-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.grid-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Card Styles */
+.card {
+  background: #FFFFFF;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: 0.2s ease;
+}
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #29074A;
+}
+.card p {
+  margin: 0;
+  color: #1316C7;
+}
+
+/* PieChart */
+.piechart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.piechart-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  transition: background 0.3s ease;
+}
+.piechart-labels {
+  margin-top: 15px;
+}
+
+/* Inputs */
+input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #C9B0EF;
+}
