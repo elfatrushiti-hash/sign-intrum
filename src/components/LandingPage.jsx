@@ -1,8 +1,15 @@
 import React from "react";
+import LanguageSwitcher from "./LanguageSwitcher";
 
-export default function LandingPage({ start, t }) {
+export default function LandingPage({ start, t, language, setLanguage }) {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-gray-50">
+    <div className="min-h-screen flex flex-col justify-center items-center text-center px-6 bg-bgPurple20 relative">
+
+      {/* ✅ Language Switcher oben rechts */}
+      <div className="absolute top-6 right-6">
+        <LanguageSwitcher language={language} setLanguage={setLanguage} />
+      </div>
+
       <h1 className="text-4xl font-bold text-intrumPurple mb-4">
         {t.landing.title}
       </h1>
@@ -17,6 +24,7 @@ export default function LandingPage({ start, t }) {
       >
         {t.landing.button}
       </button>
+
     </div>
   );
 }
