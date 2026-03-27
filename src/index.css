@@ -2,66 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global Styling */
 body {
   @apply bg-gray-50 text-gray-900 antialiased;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
 .container {
   @apply max-w-6xl mx-auto;
 }
 
-/* Intrum Colors */
-.bg-intrumPurple {
-  background-color: #170456;
-}
-.text-intrumPurple {
-  color: #170456;
-}
-.border-primaryPurple {
-  border-color: #170456;
-}
+.bg-intrumPurple { background-color: #170456; }
+.text-intrumPurple { color: #170456; }
+.border-primaryPurple { border-color: #170456; }
 
-.bg-bgPurple40 {
-  background-color: rgba(23, 4, 86, 0.4);
-}
-.bg-bgPurple20 {
-  background-color: rgba(23, 4, 86, 0.2);
-}
+.bg-bgPurple40 { background-color: rgba(23, 4, 86, 0.4); }
+.bg-bgPurple20 { background-color: rgba(23, 4, 86, 0.2); }
 
-.bg-intrumTeal {
-  background-color: #03a4ad;
-}
-.bg-intrumLightBlue {
-  background-color: #2395ff;
-}
-.bg-intrumViolet {
-  background-color: #8750e5;
-}
+.bg-intrumTeal { background-color: #03a4ad; }
+.bg-intrumLightBlue { background-color: #2395ff; }
+.bg-intrumViolet { background-color: #8750e5; }
 
-/* Smooth UI Animation */
-* {
-  transition: all 0.15s ease-in-out;
-}
+* { transition: all 0.15s ease-in-out; }
 
-/* Fade In */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+
 .animate-fadeIn {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* Dashboard Background Effects */
 .dashboard-wrapper {
   @apply min-h-screen bg-gray-50 relative overflow-hidden;
 }
@@ -74,7 +44,6 @@ body {
   @apply absolute inset-0 bg-gradient-to-b from-transparent to-bgPurple20 opacity-60 pointer-events-none;
 }
 
-/* Premium Tile */
 .card-tile {
   @apply p-6 bg-white rounded-2xl shadow-md border border-bgPurple20;
 }
@@ -86,45 +55,25 @@ body {
 
 .card-hover:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow:
-    0 16px 40px rgba(23,4,86,0.12),
-    0 0 20px rgba(23,4,86,0.08);
+  box-shadow: 0 16px 40px rgba(23,4,86,0.12), 0 0 20px rgba(23,4,86,0.08);
 }
 
-/* Fade-in tile */
 .fade-section {
   opacity: 0;
   animation: fadeIn 0.8s ease forwards;
 }
 
-/* Inputs */
-.input-focus {
-  transition: all 0.25s ease;
-}
+.input-focus { transition: all 0.25s ease; }
+
 .input-focus:focus {
   box-shadow: 0 0 0 4px rgba(23, 4, 86, 0.25);
   border-color: #170456;
 }
 
-/* Section Title */
 .section-headline {
   @apply text-xl font-semibold tracking-tight text-intrumPurple mb-4;
 }
 
-/* PDF Styles */
-.pdf-title {
-  font-size: 26px;
-  font-weight: 800;
-  color: #170456;
-}
-
-.pdf-section {
-  font-size: 16px;
-  font-weight: 600;
-  color: #170456;
-}
-
-.pdf-text {
-  font-size: 12px;
-  color: #333;
-}
+.pdf-title { font-size: 26px; font-weight: 800; color: #170456; }
+.pdf-section { font-size: 16px; font-weight: 600; color: #170456; }
+.pdf-text { font-size: 12px; color: #333; }
