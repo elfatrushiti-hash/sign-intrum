@@ -110,7 +110,7 @@ export const translations = {
 
     kpi: {
       handwritten: "Coût du processus papier",
-      handwrittenDesc: "Coûts liés au processus manuel: papier, envoi et travail.",
+      handwrittenDesc: "Coûts liés au processus manuel : papier, envoi et travail.",
       digital: "Coût Digital SIGN",
       digitalDesc: "Coûts du processus digital avec SIGN.",
       timeSaved: "Temps économisé",
