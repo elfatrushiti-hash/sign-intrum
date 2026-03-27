@@ -16,7 +16,10 @@ export default function ChartsSection({ data, t }) {
       {
         label: t.charts.label,
         data: [data.totalHand, data.totalDigital],
-        backgroundColor: ["#170456", "#2395FF"],
+        backgroundColor: [
+          "#170456",   // Intrum Purple
+          "#8750E5"    // Soft Purple
+        ],
         borderWidth: 0,
       }
     ]
@@ -27,7 +30,6 @@ export default function ChartsSection({ data, t }) {
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.charts.title}
       </h4>
-
       <Doughnut data={chartData} />
     </div>
   );
