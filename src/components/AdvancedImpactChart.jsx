@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -13,6 +13,13 @@ import {
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 export default function AdvancedImpactChart({ data, t }) {
+  const chartRef = useRef(null);
+
+  useEffect(() => {
+    if (!window.__charts) window.__charts = {};
+    window.__charts["line-chart"] = chartRef.current;
+  }, []);
+
   const chartData = {
     labels: [
       t.advancedChart.today,
@@ -50,19 +57,10 @@ export default function AdvancedImpactChart({ data, t }) {
     ],
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { position: "bottom" } },
-    scales: {
-      y: { beginAtZero: true },
-      x: { grid: { display: false } }
-    }
-  };
-
   return (
     <div className="card-tile card-hover fade-section">
       <h4 className="section-headline">{t.advancedChart.title}</h4>
-      <Line id="line-chart" data={chartData} options={chartOptions} />
+      <Line ref={chartRef} id="line-chart" data={chartData} />
     </div>
   );
 }
