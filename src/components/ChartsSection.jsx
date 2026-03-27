@@ -16,21 +16,17 @@ export default function ChartsSection({ data, t }) {
       {
         label: t.charts.label,
         data: [data.totalHand, data.totalDigital],
-        backgroundColor: [
-          "#170456",   // Intrum Purple
-          "#8750E5"    // Soft Purple
-        ],
+        backgroundColor: ["#170456", "#8750E5"],
         borderWidth: 0,
-      }
-    ]
+      },
+    ],
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
-      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
-        {t.charts.title}
-      </h4>
+    <div className="card-tile card-hover fade-section">
+      <h4 className="section-headline">{t.charts.title}</h4>
       <Doughnut data={chartData} />
     </div>
   );
 }
+``
