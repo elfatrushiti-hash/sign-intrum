@@ -22,20 +22,12 @@ export default function ChartsSection({ data, t }) {
     ]
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: {
-      legend: { position: "bottom" },
-    }
-  };
-
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.charts.title}
       </h4>
-
-      <Doughnut data={chartData} options={chartOptions} />
+      <Doughnut data={chartData} />
     </div>
   );
 }
