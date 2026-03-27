@@ -16,7 +16,7 @@ export default function ChartsSection({ data, t }) {
       {
         label: t.charts.label,
         data: [data.totalHand, data.totalDigital],
-        backgroundColor: ["#170456", "#1316C7"],
+        backgroundColor: ["#170456", "#2395FF"],
         borderWidth: 0,
       }
     ]
@@ -27,6 +27,7 @@ export default function ChartsSection({ data, t }) {
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.charts.title}
       </h4>
+
       <Doughnut data={chartData} />
     </div>
   );
