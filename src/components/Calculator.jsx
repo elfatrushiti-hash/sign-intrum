@@ -35,46 +35,49 @@ export default function Calculator({ impactData, setImpactData, t }) {
     });
   };
 
+  const fieldStyle =
+    "border border-primaryPurple p-3 rounded-lg text-center w-full bg-white shadow-sm focus:ring-2 focus:ring-intrumPurple/50 outline-none transition";
+
   return (
-    <div>
-      <h3 className="text-2xl font-bold text-intrumPurple">
+    <div className="card animate-fadeIn">
+      <h3 className="text-2xl font-bold text-intrumPurple mb-4">
         {t.calculator.title}
       </h3>
 
-      <p className="text-gray-700 mb-4">{t.calculator.subtitle}</p>
+      <p className="text-gray-700 mb-6">{t.calculator.subtitle}</p>
 
       {/* Dokumente */}
-      <label className="block mb-3 font-medium text-gray-800">
+      <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.docs}
         <input
           type="number"
           min="0"
           placeholder="z.B. 10"
-          className="border border-primaryPurple p-2 rounded text-center w-full mt-1"
+          className={fieldStyle}
           onChange={(e) => handleChange("docs", e.target.value)}
         />
       </label>
 
       {/* Signaturen */}
-      <label className="block mb-3 font-medium text-gray-800">
+      <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.signs}
         <input
           type="number"
           min="0"
           placeholder="z.B. 2"
-          className="border border-primaryPurple p-2 rounded text-center w-full mt-1"
+          className={fieldStyle}
           onChange={(e) => handleChange("signs", e.target.value)}
         />
       </label>
 
       {/* Seiten */}
-      <label className="block mb-3 font-medium text-gray-800">
+      <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.pages}
         <input
           type="number"
           min="1"
           placeholder="z.B. 5"
-          className="border border-primaryPurple p-2 rounded text-center w-full mt-1"
+          className={fieldStyle}
           onChange={(e) => handleChange("pages", e.target.value)}
         />
       </label>
