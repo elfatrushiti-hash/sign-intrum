@@ -25,8 +25,7 @@ export default function ChartsSection({ data, t }) {
   return (
     <div className="card-tile card-hover fade-section">
       <h4 className="section-headline">{t.charts.title}</h4>
-      <Doughnut data={chartData} />
+      <Doughnut id="donut-chart" data={chartData} />
     </div>
   );
 }
-``
