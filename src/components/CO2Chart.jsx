@@ -18,9 +18,19 @@ export default function CO2Chart({ data, t }) {
       {
         label: t.co2Counter.subtitle,
         data: [data.co2Saved + 10, 10],
-        backgroundColor: ["#7c3aed", "#10b981"],
+        backgroundColor: ["#170456", "#2395FF"],
+        borderWidth: 0,
       }
     ]
+  };
+
+  const chartOptions = {
+    responsive: true,
+    plugins: { legend: { position: "bottom" } },
+    scales: {
+      y: { beginAtZero: true },
+      x: { grid: { display: false } }
+    }
   };
 
   return (
@@ -28,7 +38,8 @@ export default function CO2Chart({ data, t }) {
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.co2Counter.title}
       </h4>
-      <Bar data={chartData} />
+
+      <Bar data={chartData} options={chartOptions} />
     </div>
   );
 }
