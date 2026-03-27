@@ -27,7 +27,7 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalHand,
           data.totalHand * 3,
           data.totalHand * 6,
-          data.totalHand * 12
+          data.totalHand * 12,
         ],
         borderColor: "#170456",
         backgroundColor: "rgba(23,4,86,0.15)",
@@ -40,14 +40,14 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalDigital,
           data.totalDigital * 3,
           data.totalDigital * 6,
-          data.totalDigital * 12
+          data.totalDigital * 12,
         ],
-        borderColor: "#2395FF",
-        backgroundColor: "rgba(35,149,255,0.15)",
+        borderColor: "#8750E5",
+        backgroundColor: "rgba(135,80,229,0.15)",
         tension: 0.35,
         fill: true,
-      }
-    ]
+      },
+    ],
   };
 
   const chartOptions = {
@@ -60,11 +60,8 @@ export default function AdvancedImpactChart({ data, t }) {
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
-      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
-        {t.advancedChart.title}
-      </h4>
-
+    <div className="card-tile card-hover fade-section">
+      <h4 className="section-headline">{t.advancedChart.title}</h4>
       <Line data={chartData} options={chartOptions} />
     </div>
   );
