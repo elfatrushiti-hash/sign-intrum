@@ -15,16 +15,18 @@ export default function CO2Counter({ data, t }) {
   }, [data]);
 
   return (
-    <div>
-      <h4 className="text-2xl font-bold text-intrumPurple mb-2">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+      <h4 className="text-xl font-bold text-intrumPurple mb-2">
         {t.co2Counter.title}
       </h4>
 
-      <p className="text-3xl font-bold text-gray-900">
+      <p className="text-3xl font-extrabold text-gray-900">
         {display.toFixed(2)} kg
       </p>
 
-      <p className="text-gray-600 mt-2">{t.co2Counter.subtitle}</p>
+      <p className="text-gray-600 mt-2 text-sm">
+        {t.co2Counter.subtitle}
+      </p>
     </div>
   );
 }
