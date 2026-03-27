@@ -6,10 +6,9 @@ import {
   LinearScale,
   BarElement,
   Tooltip,
-  Legend,
+  Legend
 } from "chart.js";
 
-// ChartJS Module registrieren
 ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
 
 export default function CO2Chart({ data, t }) {
@@ -18,25 +17,21 @@ export default function CO2Chart({ data, t }) {
     datasets: [
       {
         label: t.co2Counter.subtitle,
-        data: [data.co2Saved + 10, 10], // exakt aus deiner Originaldatei übernommen
+        data: [data.co2Saved + 10, 10],
         backgroundColor: ["#7c3aed", "#10b981"],
-      },
-    ],
+      }
+    ]
   };
 
   const chartOptions = {
     responsive: true,
-    plugins: {
-      legend: { position: "bottom" },
-    },
-    scales: {
-      y: { beginAtZero: true },
-    },
+    plugins: { legend: { position: "bottom" } },
+    scales: { y: { beginAtZero: true } },
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow">
-      <h4 className="text-2xl font-bold text-intrumPurple mb-4">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.co2Counter.title}
       </h4>
 
