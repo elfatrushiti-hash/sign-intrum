@@ -28,13 +28,12 @@ export async function exportPDF() {
   /* ---------------------------------------
      PAGE 2 – KPI ANALYSE + DONUT CHART
   --------------------------------------- */
-
   pdf.setFont("helvetica", "bold");
   pdf.setFontSize(20);
   pdf.setTextColor(23, 4, 86);
   pdf.text("KPI Analyse & Kostenübersicht", 20, 20);
 
-  // ✅ KPI-Section screenshot
+  // KPI Section screenshot
   const kpiSection = document.querySelector("#kpi-section");
   if (kpiSection) {
     const canvas = await html2canvas(kpiSection, { scale: 2 });
@@ -42,7 +41,7 @@ export async function exportPDF() {
     pdf.addImage(img, "PNG", 10, 30, 190, 70);
   }
 
-  // ✅ Donut Chart
+  // Donut Chart
   const donut = document.querySelector("#donut-chart");
   if (donut) {
     const donutImg = donut.toDataURL("image/png");
@@ -60,7 +59,7 @@ export async function exportPDF() {
   pdf.setTextColor(23, 4, 86);
   pdf.text("Vergleich & Trends", 20, 20);
 
-  // ✅ Benchmark + Comparison Section screenshot
+  // Benchmark + Comparison Section screenshot
   const compareSection = document.querySelector("#compare-section");
   if (compareSection) {
     const compareCanvas = await html2canvas(compareSection, { scale: 2 });
@@ -68,14 +67,14 @@ export async function exportPDF() {
     pdf.addImage(compareImg, "PNG", 10, 30, 190, 80);
   }
 
-  // ✅ Line chart
+  // Line chart
   const lineChart = document.querySelector("#line-chart");
   if (lineChart) {
     const img = lineChart.toDataURL("image/png");
     pdf.addImage(img, "PNG", 15, 120, 180, 70);
   }
 
-  // ✅ CO2 chart
+  // CO₂ chart
   const co2Chart = document.querySelector("#co2-chart");
   if (co2Chart) {
     const img = co2Chart.toDataURL("image/png");
