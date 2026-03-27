@@ -23,19 +23,12 @@ export default function CO2Chart({ data, t }) {
     ]
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { position: "bottom" } },
-    scales: { y: { beginAtZero: true } },
-  };
-
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.co2Counter.title}
       </h4>
-
-      <Bar data={chartData} options={chartOptions} />
+      <Bar data={chartData} />
     </div>
   );
 }
