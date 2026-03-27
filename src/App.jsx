@@ -30,9 +30,16 @@ export default function App() {
     co2Saved: 0
   });
 
-  if (showLanding) {
-    return <LandingPage start={() => setShowLanding(false)} t={t} />;
-  }
+ if (showLanding) {
+  return (
+    <LandingPage
+      start={() => setShowLanding(false)}
+      t={t}
+      language={language}
+      setLanguage={setLanguage}
+    />
+  );
+}
 
   return (
     <AdminMode t={t}>
