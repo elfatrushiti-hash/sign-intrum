@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom global styles */
+body {
+  @apply bg-white text-gray-900 antialiased;
+}
+
+.container {
+  @apply max-w-6xl;
+}
+
+/* Intrum‑Farben – falls du sie irgendwo nutzt */
+.bg-intrumPurple {
+  background-color: #170456;
+}
+
+.text-intrumPurple {
+  color: #170456;
+}
+
+.border-primaryPurple {
+  border-color: #170456;
+}
+
+/* Optional: smoother transitions */
+* {
+  transition: all 0.15s ease-in-out;
+}
