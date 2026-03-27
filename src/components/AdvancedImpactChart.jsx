@@ -7,10 +7,9 @@ import {
   LinearScale,
   PointElement,
   Tooltip,
-  Legend,
+  Legend
 } from "chart.js";
 
-// ChartJS Module registrieren
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 export default function AdvancedImpactChart({ data, t }) {
@@ -45,27 +44,19 @@ export default function AdvancedImpactChart({ data, t }) {
         borderColor: "#10b981",
         tension: 0.3,
         fill: false,
-      },
-    ],
+      }
+    ]
   };
 
   const chartOptions = {
     responsive: true,
-    plugins: {
-      legend: {
-        position: "bottom",
-      },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
+    plugins: { legend: { position: "bottom" } },
+    scales: { y: { beginAtZero: true } },
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow">
-      <h4 className="text-2xl font-bold text-intrumPurple mb-4">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.advancedChart.title}
       </h4>
 
