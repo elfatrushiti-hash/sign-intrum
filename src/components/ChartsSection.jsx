@@ -24,9 +24,9 @@ export default function ChartsSection({ data, t }) {
         label: t.charts.label,
         data: [data.totalHand, data.totalDigital],
         backgroundColor: ["#170456", "#8750E5"],
-        borderWidth: 0,
-      },
-    ],
+        borderWidth: 0
+      }
+    ]
   };
 
   return (
