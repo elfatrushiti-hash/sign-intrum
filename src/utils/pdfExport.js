@@ -1,13 +1,17 @@
 import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+
+// Hole Chart Instanzen aus Fensterglobals
+function getChart(id) {
+  return window.__charts?.[id] || null;
+}
 
 export async function exportPDF() {
   const pdf = new jsPDF("p", "mm", "a4");
 
-  /* ---------------------------------------
-     PAGE 1 – TITLE PAGE
-  --------------------------------------- */
-  pdf.setFillColor(23, 4, 86); // Intrum Purple
+  /* -------------------------------
+     PAGE 1 – Titel
+  ------------------------------- */
+  pdf.setFillColor(23, 4, 86);
   pdf.rect(0, 0, 210, 297, "F");
 
   pdf.setFont("helvetica", "bold");
@@ -18,66 +22,62 @@ export async function exportPDF() {
   pdf.setFontSize(16);
   pdf.text("Einsparungsanalyse – digital vs traditionell", 20, 65);
 
-  const date = new Date().toLocaleDateString();
   pdf.setFontSize(12);
-  pdf.text("Datum: " + date, 20, 85);
+  pdf.text("Datum: " + new Date().toLocaleDateString(), 20, 85);
 
   pdf.addPage();
 
-
-  /* ---------------------------------------
-     PAGE 2 – KPI ANALYSE + DONUT CHART
-  --------------------------------------- */
+  /* -------------------------------
+     PAGE 2 – KPI + Donut
+  ------------------------------- */
   pdf.setFont("helvetica", "bold");
   pdf.setFontSize(20);
   pdf.setTextColor(23, 4, 86);
   pdf.text("KPI Analyse & Kostenübersicht", 20, 20);
 
-  // KPI Section screenshot
-  const kpiSection = document.querySelector("#kpi-section");
-  if (kpiSection) {
-    const canvas = await html2canvas(kpiSection, { scale: 2 });
-    const img = canvas.toDataURL("image/png");
-    pdf.addImage(img, "PNG", 10, 30, 190, 70);
+  // ✅ KPI Cards als Screenshot (nur 2x Scale)
+  const kpiEl = document.querySelector("#kpi-section");
+  if (kpiEl) {
+    const canvas = await window.html2canvas(kpiEl, { scale: 3 });
+    const png = canvas.toDataURL("image/png");
+    pdf.addImage(png, "PNG", 10, 30, 190, 70);
   }
 
-  // Donut Chart
-  const donut = document.querySelector("#donut-chart");
+  // ✅ Donut Chart direkt aus Chart.js (SUPER scharf)
+  const donut = getChart("donut-chart");
   if (donut) {
-    const donutImg = donut.toDataURL("image/png");
-    pdf.addImage(donutImg, "PNG", 30, 110, 150, 150);
+    const img = donut.toBase64Image();
+    pdf.addImage(img, "PNG", 30, 110, 150, 150);
   }
 
   pdf.addPage();
 
-
-  /* ---------------------------------------
-     PAGE 3 – VERGLEICH + TRENDS
-  --------------------------------------- */
-  pdf.setFont("helvetica", "bold");
+  /* -------------------------------
+     PAGE 3 – Vergleich + Trends
+  ------------------------------- */
   pdf.setFontSize(20);
   pdf.setTextColor(23, 4, 86);
   pdf.text("Vergleich & Trends", 20, 20);
 
-  // Benchmark + Comparison Section screenshot
-  const compareSection = document.querySelector("#compare-section");
-  if (compareSection) {
-    const compareCanvas = await html2canvas(compareSection, { scale: 2 });
-    const compareImg = compareCanvas.toDataURL("image/png");
-    pdf.addImage(compareImg, "PNG", 10, 30, 190, 80);
+  // ✅ Comparison (höhere Qualität)
+  const compareEl = document.querySelector("#compare-section");
+  if (compareEl) {
+    const canvas = await window.html2canvas(compareEl, { scale: 3 });
+    const png = canvas.toDataURL("image/png");
+    pdf.addImage(png, "PNG", 10, 30, 190, 80);
   }
 
-  // Line chart
-  const lineChart = document.querySelector("#line-chart");
-  if (lineChart) {
-    const img = lineChart.toDataURL("image/png");
+  // ✅ Line Chart (Chart.js PNG)
+  const line = getChart("line-chart");
+  if (line) {
+    const img = line.toBase64Image();
     pdf.addImage(img, "PNG", 15, 120, 180, 70);
   }
 
-  // CO₂ chart
-  const co2Chart = document.querySelector("#co2-chart");
-  if (co2Chart) {
-    const img = co2Chart.toDataURL("image/png");
+  // ✅ CO2 Chart (Chart.js PNG)
+  const co2 = getChart("co2-chart");
+  if (co2) {
+    const img = co2.toBase64Image();
     pdf.addImage(img, "PNG", 15, 200, 180, 70);
   }
 
