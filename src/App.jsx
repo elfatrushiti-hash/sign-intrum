@@ -57,8 +57,6 @@ export default function App() {
               language={language}
               setLanguage={setLanguage}
             />
-
-           
 <button
   onClick={() => exportPDF(impactData, t)}
   className="btn-primary"
