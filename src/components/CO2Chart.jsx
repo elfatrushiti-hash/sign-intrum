@@ -26,9 +26,9 @@ export default function CO2Chart({ data, t }) {
         label: t.co2Counter.subtitle,
         data: [data.co2Saved + 10, 10],
         backgroundColor: ["#170456", "#8750E5"],
-        borderWidth: 0,
-      },
-    ],
+        borderWidth: 0
+      }
+    ]
   };
 
   return (
