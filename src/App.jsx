@@ -1,4 +1,4 @@
-import React, { useState, lazy, Suspense } from "react";
+import React, { useState } from "react";
 import Hero from "./components/Hero";
 import Calculator from "./components/Calculator";
 import KPISection from "./components/KPISection";
@@ -50,19 +50,21 @@ export default function App() {
         <div className="dashboard-bg-gradient" />
 
         <div className="container mx-auto p-6 relative z-10">
-
           {/* Top Bar */}
           <div className="flex justify-end mb-6 gap-4">
             <LanguageSwitcher
               language={language}
               setLanguage={setLanguage}
             />
-<button
-  onClick={() => exportPDF(impactData, t)}
-  className="btn-primary"
->
-  PDF Export
-</button>
+
+            <button
+              onClick={() => exportPDF(impactData, t)}
+              className="btn-primary"
+            >
+              PDF Export
+            </button>
+          </div>
+
           <Hero t={t} />
 
           {/* TOP ZONE */}
