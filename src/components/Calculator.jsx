@@ -6,19 +6,16 @@ export default function Calculator({ impactData, setImpactData, t }) {
     const signs = field === "signs" ? Number(value) : impactData.signs;
     const pages = field === "pages" ? Number(value) : impactData.pages;
 
-    // Handgeschrieben (Papierprozess)
     const paperCost = docs * signs * 2.5;
     const postage = docs * signs * 2.2;
     const workHours = docs * signs * 0.5 * pages;
     const workCost = workHours * 63;
     const totalHand = paperCost + postage + workCost;
 
-    // Digital SIGN
     const digitalCost = docs * signs * 2.2;
     const digitalWorkCost = docs * signs * 0.05 * 63 * pages;
     const totalDigital = digitalCost + digitalWorkCost;
 
-    // Einsparungen
     const timeSaved = workHours - docs * signs * 0.05 * pages;
     const moneySaved = totalHand - totalDigital;
     const co2Saved = docs * signs * 0.5 * pages;
@@ -36,17 +33,16 @@ export default function Calculator({ impactData, setImpactData, t }) {
   };
 
   const fieldStyle =
-    "border border-primaryPurple p-3 rounded-lg text-center w-full bg-white shadow-sm focus:ring-2 focus:ring-intrumPurple/50 outline-none transition";
+    "input-focus border border-primaryPurple p-3 rounded-lg text-center w-full bg-white shadow-sm";
 
   return (
-    <div className="card animate-fadeIn">
+    <div className="card fade-section">
       <h3 className="text-2xl font-bold text-intrumPurple mb-4">
         {t.calculator.title}
       </h3>
 
       <p className="text-gray-700 mb-6">{t.calculator.subtitle}</p>
 
-      {/* Dokumente */}
       <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.docs}
         <input
@@ -58,7 +54,6 @@ export default function Calculator({ impactData, setImpactData, t }) {
         />
       </label>
 
-      {/* Signaturen */}
       <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.signs}
         <input
@@ -70,7 +65,6 @@ export default function Calculator({ impactData, setImpactData, t }) {
         />
       </label>
 
-      {/* Seiten */}
       <label className="block mb-4 font-medium text-gray-800">
         {t.calculator.pages}
         <input
