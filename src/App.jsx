@@ -58,11 +58,13 @@ export default function App() {
               setLanguage={setLanguage}
             />
 
-            <button onClick={exportPDF} className="btn-primary">
-              PDF Export
-            </button>
-          </div>
-
+           
+<button
+  onClick={() => exportPDF(impactData, t)}
+  className="btn-primary"
+>
+  PDF Export
+</button>
           <Hero t={t} />
 
           {/* TOP ZONE */}
