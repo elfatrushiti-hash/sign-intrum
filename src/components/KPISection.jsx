@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   FaFileAlt,
   FaPenFancy,
@@ -7,7 +7,7 @@ import {
   FaLeaf
 } from "react-icons/fa";
 
-export default function KPISection({ data, t }) {
+function KPISectionBase({ data, t }) {
   const [display, setDisplay] = useState({ ...data });
   const [openCard, setOpenCard] = useState(null);
 
@@ -29,7 +29,7 @@ export default function KPISection({ data, t }) {
     return () => clearInterval(fadeInterval);
   }, [data]);
 
-  const cards = [
+  const cards = useMemo(() => [
     {
       key: "totalHand",
       label: t.kpi.handwritten,
@@ -65,10 +65,13 @@ export default function KPISection({ data, t }) {
       icon: <FaLeaf size={26} />,
       description: t.kpi.co2SavedDesc,
     }
-  ];
+  ], [display, t]);
 
   return (
-    <div className="grid grid-cols-1 gap-4 fade-section">
+    <div
+      id="kpi-section"
+      className="grid grid-cols-1 gap-4 fade-section"
+    >
       {cards.map((c, i) => (
         <div
           key={i}
@@ -76,7 +79,9 @@ export default function KPISection({ data, t }) {
           onClick={() => setOpenCard(openCard === c.key ? null : c.key)}
         >
           <div className="flex items-center gap-3 mb-1">
-            {React.cloneElement(c.icon, { className: "text-intrumPurple opacity-90" })}
+            {React.cloneElement(c.icon, {
+              className: "text-intrumPurple opacity-90"
+            })}
             <span className="font-semibold text-gray-800">{c.label}</span>
           </div>
 
@@ -94,3 +99,5 @@ export default function KPISection({ data, t }) {
     </div>
   );
 }
+
+export default React.memo(KPISectionBase);
