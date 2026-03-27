@@ -1,27 +1,25 @@
 import jsPDF from "jspdf";
 import autoTable from "jspdf-autotable";
 
-/* 
-  Helper: Hole ChartJS Bild in top Qualität
-  Chart.js liefert perfekte PNGs via toBase64Image()
-*/
+// High‑Resolution ChartJS Export (2x DPI)
 function chartImage(id) {
   if (!window.__charts || !window.__charts[id]) return null;
-  return window.__charts[id].toBase64Image("image/png", 1.0);
+  // High DPI export for perfect print quality
+  return window.__charts[id].toBase64Image("image/png", 2.0);
 }
 
-export async function exportPDF(data, t) {
+export function exportPDF(data, t) {
   const pdf = new jsPDF("p", "mm", "a4");
 
-  /* ---------------------------------------
-     PAGE 1 – TITELSEITE (Vektorqualität)
-  ---------------------------------------- */
+  /* -------------------------
+     PAGE 1 — TITELSEITE
+  ------------------------- */
   pdf.setFillColor(23, 4, 86);
   pdf.rect(0, 0, 210, 297, "F");
 
-  pdf.setTextColor(255, 255, 255);
   pdf.setFont("helvetica", "bold");
   pdf.setFontSize(32);
+  pdf.setTextColor(255, 255, 255);
   pdf.text("SIGN Impact Report", 20, 45);
 
   pdf.setFontSize(16);
@@ -33,19 +31,14 @@ export async function exportPDF(data, t) {
   pdf.addPage();
 
 
+  /* -------------------------
+     PAGE 2 — KPI Tabelle + Donut
+  ------------------------- */
 
-  /* ---------------------------------------
-     PAGE 2 – KPI SECTION + DONUT (scharf)
-  ---------------------------------------- */
-
-  pdf.setTextColor(23, 4, 86);
   pdf.setFont("helvetica", "bold");
-  pdf.setFontSize(18);
+  pdf.setFontSize(20);
+  pdf.setTextColor(23, 4, 86);
   pdf.text("KPI Analyse", 20, 20);
-
-  // KPI Values (scharf, Vektor)
-  pdf.setFontSize(12);
-  pdf.setTextColor(50, 50, 50);
 
   const kpis = [
     [t.kpi.handwritten, data.totalHand.toFixed(2) + " CHF"],
@@ -56,14 +49,14 @@ export async function exportPDF(data, t) {
   ];
 
   autoTable(pdf, {
-    startY: 30,
     head: [["Kategorie", "Wert"]],
     body: kpis,
-    styles: { fontSize: 11 },
+    startY: 30,
     headStyles: { fillColor: [23, 4, 86], textColor: 255 },
+    styles: { fontSize: 11 }
   });
 
-  // Donut Chart (HQ-ChartJS Export)
+  // High‑Quality Donut Chart
   const donut = chartImage("donut-chart");
   if (donut) {
     pdf.addImage(donut, "PNG", 25, 90, 160, 160);
@@ -72,28 +65,30 @@ export async function exportPDF(data, t) {
   pdf.addPage();
 
 
-
-  /* ---------------------------------------
-     PAGE 3 – Benchmark, Comparison & Charts
-  ---------------------------------------- */
-
-  pdf.setFontSize(18);
+  /* -------------------------
+     PAGE 3 — Vergleich + Charts
+  ------------------------- */
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(20);
   pdf.setTextColor(23, 4, 86);
   pdf.text("Vergleich & Trends", 20, 20);
 
-  /* Benchmark Table (vektorbasiert) */
+  // Benchmark Table
   autoTable(pdf, {
     startY: 30,
     head: [["Kategorie", "Wert"]],
     body: [
       [t.benchmark.avgCost, "8.50 CHF"],
-      [t.benchmark.yourCost, (data.totalHand / (data.docs * data.signs)).toFixed(2) + " CHF"]
+      [
+        t.benchmark.yourCost,
+        (data.totalHand / (data.docs * data.signs)).toFixed(2) + " CHF"
+      ]
     ],
-    styles: { fontSize: 11 },
     headStyles: { fillColor: [23, 4, 86], textColor: 255 },
+    styles: { fontSize: 11 },
   });
 
-  /* Comparison Table */
+  // Comparison Table
   autoTable(pdf, {
     startY: pdf.lastAutoTable.finalY + 10,
     head: [[t.comparison.category, t.comparison.paper, t.comparison.digital]],
@@ -102,17 +97,19 @@ export async function exportPDF(data, t) {
       [t.comparison.time, "0", data.timeSaved.toFixed(2)],
       [t.comparison.co2, "0", data.co2Saved.toFixed(2)],
     ],
+    styles: { fontSize: 11 },
   });
 
-  /* Charts: perfektes ChartJS PNG */
   let y = pdf.lastAutoTable.finalY + 20;
 
+  // Line Chart — high DPI
   const line = chartImage("line-chart");
   if (line) {
     pdf.addImage(line, "PNG", 15, y, 180, 70);
     y += 80;
   }
 
+  // CO2 Chart — high DPI
   const co2 = chartImage("co2-chart");
   if (co2) {
     pdf.addImage(co2, "PNG", 15, y, 180, 70);
