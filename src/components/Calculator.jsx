@@ -6,12 +6,14 @@ export default function Calculator({ impactData, setImpactData, t }) {
     const signs = field === "signs" ? Number(value) : impactData.signs;
     const pages = field === "pages" ? Number(value) : impactData.pages;
 
+    // Papierprozess
     const paperCost = docs * signs * 2.5;
     const postage = docs * signs * 2.2;
     const workHours = docs * signs * 0.5 * pages;
     const workCost = workHours * 63;
     const totalHand = paperCost + postage + workCost;
 
+    // Digital SIGN
     const digitalCost = docs * signs * 2.2;
     const digitalWorkCost = docs * signs * 0.05 * 63 * pages;
     const totalDigital = digitalCost + digitalWorkCost;
@@ -36,41 +38,41 @@ export default function Calculator({ impactData, setImpactData, t }) {
     "input-focus border border-primaryPurple p-3 rounded-lg text-center w-full bg-white shadow-sm";
 
   return (
-    <div className="card fade-section">
-      <h3 className="text-2xl font-bold text-intrumPurple mb-4">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
+      <h3 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.calculator.title}
       </h3>
 
-      <p className="text-gray-700 mb-6">{t.calculator.subtitle}</p>
+      <p className="text-gray-700 mb-6 text-sm">{t.calculator.subtitle}</p>
 
-      <label className="block mb-4 font-medium text-gray-800">
+      <label className="block mb-4 font-medium text-gray-800 text-sm">
         {t.calculator.docs}
         <input
           type="number"
           min="0"
-          placeholder="z.B. 10"
+          placeholder="10"
           className={fieldStyle}
           onChange={(e) => handleChange("docs", e.target.value)}
         />
       </label>
 
-      <label className="block mb-4 font-medium text-gray-800">
+      <label className="block mb-4 font-medium text-gray-800 text-sm">
         {t.calculator.signs}
         <input
           type="number"
           min="0"
-          placeholder="z.B. 2"
+          placeholder="2"
           className={fieldStyle}
           onChange={(e) => handleChange("signs", e.target.value)}
         />
       </label>
 
-      <label className="block mb-4 font-medium text-gray-800">
+      <label className="block mb-2 font-medium text-gray-800 text-sm">
         {t.calculator.pages}
         <input
           type="number"
           min="1"
-          placeholder="z.B. 5"
+          placeholder="5"
           className={fieldStyle}
           onChange={(e) => handleChange("pages", e.target.value)}
         />
