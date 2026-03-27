@@ -50,8 +50,12 @@ export default function App() {
         <div className="dashboard-bg-gradient" />
 
         <div className="container mx-auto p-6 relative z-10">
+          
           <div className="flex justify-end mb-6 gap-4">
-            <LanguageSwitcher language={language} setLanguage={setLanguage} />
+            <LanguageSwitcher
+              language={language}
+              setLanguage={setLanguage}
+            />
 
             <button
               onClick={() => exportPDF(impactData, t)}
