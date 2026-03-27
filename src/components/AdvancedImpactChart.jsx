@@ -32,7 +32,7 @@ export default function AdvancedImpactChart({ data, t }) {
       t.advancedChart.today,
       t.advancedChart.month3,
       t.advancedChart.month6,
-      t.advancedChart.year1,
+      t.advancedChart.year1
     ],
     datasets: [
       {
@@ -41,12 +41,12 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalHand,
           data.totalHand * 3,
           data.totalHand * 6,
-          data.totalHand * 12,
+          data.totalHand * 12
         ],
         borderColor: "#170456",
         backgroundColor: "rgba(23,4,86,0.15)",
         tension: 0.35,
-        fill: true,
+        fill: true
       },
       {
         label: t.advancedChart.digital,
@@ -54,14 +54,14 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalDigital,
           data.totalDigital * 3,
           data.totalDigital * 6,
-          data.totalDigital * 12,
+          data.totalDigital * 12
         ],
         borderColor: "#8750E5",
         backgroundColor: "rgba(135,80,229,0.15)",
         tension: 0.35,
-        fill: true,
-      },
-    ],
+        fill: true
+      }
+    ]
   };
 
   const chartOptions = {
