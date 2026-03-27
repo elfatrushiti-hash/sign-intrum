@@ -1,8 +1,12 @@
 import React from "react";
 import { Doughnut } from "react-chartjs-2";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend
+} from "chart.js";
 
-// ChartJS Modules registrieren
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export default function ChartsSection({ data, t }) {
@@ -13,21 +17,21 @@ export default function ChartsSection({ data, t }) {
         label: t.charts.label,
         data: [data.totalHand, data.totalDigital],
         backgroundColor: ["#170456", "#1316C7"],
-        borderWidth: 1,
-      },
-    ],
+        borderWidth: 0,
+      }
+    ]
   };
 
   const chartOptions = {
     responsive: true,
     plugins: {
       legend: { position: "bottom" },
-    },
+    }
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow">
-      <h4 className="text-2xl font-bold text-intrumPurple mb-4">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.charts.title}
       </h4>
 
