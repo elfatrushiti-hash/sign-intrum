@@ -17,11 +17,9 @@ body {
 .bg-intrumPurple {
   background-color: #170456;
 }
-
 .text-intrumPurple {
   color: #170456;
 }
-
 .border-primaryPurple {
   border-color: #170456;
 }
@@ -29,7 +27,6 @@ body {
 .bg-bgPurple40 {
   background-color: rgba(23, 4, 86, 0.4);
 }
-
 .bg-bgPurple20 {
   background-color: rgba(23, 4, 86, 0.2);
 }
@@ -37,11 +34,9 @@ body {
 .bg-intrumTeal {
   background-color: #03a4ad;
 }
-
 .bg-intrumLightBlue {
   background-color: #2395ff;
 }
-
 .bg-intrumViolet {
   background-color: #8750e5;
 }
@@ -51,7 +46,7 @@ body {
   transition: all 0.15s ease-in-out;
 }
 
-/* Fade In Animation */
+/* Fade in */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -62,7 +57,6 @@ body {
     transform: translateY(0);
   }
 }
-
 .animate-fadeIn {
   animation: fadeIn 0.8s ease-out forwards;
 }
@@ -71,62 +65,49 @@ body {
 .dashboard-wrapper {
   @apply min-h-screen bg-gray-50 relative overflow-hidden;
 }
-
 .dashboard-bg-glow {
   @apply absolute w-[800px] h-[800px] bg-bgPurple40 blur-[120px] opacity-30 rounded-full -top-40 -left-40 pointer-events-none;
 }
-
 .dashboard-bg-gradient {
   @apply absolute inset-0 bg-gradient-to-b from-transparent to-bgPurple20 opacity-60 pointer-events-none;
 }
 
-/* ------------------------------------------
-   Block 7 – Micro Interactions
-------------------------------------------- */
+/* BLOCK 8.5 – PREMIUM POLISHING */
 
-/* Soft hover lift for cards */
+/* Card tiles */
+.card-tile {
+  @apply p-6 bg-white rounded-2xl shadow-md border border-bgPurple20;
+}
+
+/* Modern hover */
 .card-hover {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
-
 .card-hover:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  box-shadow:
+    0 16px 40px rgba(23,4,86,0.12),
+    0 0 20px rgba(23,4,86,0.08);
 }
 
-/* Primary Buttons */
-.btn-primary {
-  @apply bg-intrumPurple text-white rounded-xl px-6 py-3 shadow-md;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 10px 22px rgba(23,4,86,0.35);
-}
-
-.btn-primary:active {
-  transform: scale(0.97);
-  box-shadow: 0 4px 12px rgba(23,4,86,0.2);
-}
-
-/* Fade section on load */
+/* Fade-in tile */
 .fade-section {
   opacity: 0;
-  animation: fadeInSection 0.8s ease forwards;
+  animation: fadeIn 0.8s ease forwards;
 }
 
-@keyframes fadeInSection {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* Input focus glow */
+/* Inputs */
 .input-focus {
   transition: all 0.25s ease;
 }
-
 .input-focus:focus {
   box-shadow: 0 0 0 4px rgba(23, 4, 86, 0.25);
   border-color: #170456;
 }
+
+/* Title hierarchy */
+.section-headline {
+  @apply text-xl font-semibold tracking-tight text-intrumPurple mb-4;
+}
+``
