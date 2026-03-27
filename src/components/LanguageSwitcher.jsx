@@ -1,32 +1,32 @@
 import React from "react";
 
 export default function LanguageSwitcher({ language, setLanguage }) {
-  const buttonClass = (lang) =>
-    `px-3 py-1 rounded-lg font-medium transition ${
-      language === lang
-        ? "bg-primaryPurple text-white"
-        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-    }`;
+  const baseClass =
+    "px-3 py-1 rounded-lg font-medium transition text-sm shadow-sm";
+  const active =
+    "bg-intrumPurple text-white shadow-md";
+  const inactive =
+    "bg-gray-200 text-gray-700 hover:bg-gray-300";
 
   return (
-    <div className="flex gap-3 mb-6">
+    <div className="flex gap-2">
       <button
         onClick={() => setLanguage("de")}
-        className={buttonClass("de")}
+        className={`${baseClass} ${language === "de" ? active : inactive}`}
       >
         DE
       </button>
 
       <button
         onClick={() => setLanguage("fr")}
-        className={buttonClass("fr")}
+        className={`${baseClass} ${language === "fr" ? active : inactive}`}
       >
         FR
       </button>
 
       <button
         onClick={() => setLanguage("en")}
-        className={buttonClass("en")}
+        className={`${baseClass} ${language === "en" ? active : inactive}`}
       >
         EN
       </button>
