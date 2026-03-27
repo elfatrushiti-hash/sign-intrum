@@ -1,12 +1,8 @@
-/* Tailwind Base Imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ------------------------------------------
-   Intrum Global Styling
-------------------------------------------- */
-
+/* Global Styling */
 body {
   @apply bg-gray-50 text-gray-900 antialiased;
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
@@ -17,10 +13,7 @@ body {
   @apply max-w-6xl mx-auto;
 }
 
-/* ------------------------------------------
-   Intrum Branding Colors
-------------------------------------------- */
-
+/* Intrum Colors */
 .bg-intrumPurple {
   background-color: #170456;
 }
@@ -33,7 +26,6 @@ body {
   border-color: #170456;
 }
 
-/* Transparent Purple Backgrounds */
 .bg-bgPurple40 {
   background-color: rgba(23, 4, 86, 0.4);
 }
@@ -42,7 +34,6 @@ body {
   background-color: rgba(23, 4, 86, 0.2);
 }
 
-/* Accent Colors used in KPI + Charts */
 .bg-intrumTeal {
   background-color: #03a4ad;
 }
@@ -55,19 +46,12 @@ body {
   background-color: #8750e5;
 }
 
-/* ------------------------------------------
-   Smooth Transitions Across UI
-------------------------------------------- */
-
+/* Smooth UI Transitions */
 * {
   transition: all 0.15s ease-in-out;
 }
 
-/* ------------------------------------------
-   Landingpage Animations
-------------------------------------------- */
-
-/* Fade In */
+/* Fade In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -83,10 +67,7 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
-/* ------------------------------------------
-   Utility Styling for Better Layout Spacing
-------------------------------------------- */
-
+/* Utility Layout Classes */
 .section {
   @apply my-10 md:my-16;
 }
@@ -98,4 +79,3 @@ body {
 .card {
   @apply p-6 bg-white rounded-lg shadow;
 }
-``
