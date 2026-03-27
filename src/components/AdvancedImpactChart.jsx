@@ -62,7 +62,7 @@ export default function AdvancedImpactChart({ data, t }) {
   return (
     <div className="card-tile card-hover fade-section">
       <h4 className="section-headline">{t.advancedChart.title}</h4>
-      <Line data={chartData} options={chartOptions} />
+      <Line id="line-chart" data={chartData} options={chartOptions} />
     </div>
   );
 }
