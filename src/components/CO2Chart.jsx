@@ -18,10 +18,10 @@ export default function CO2Chart({ data, t }) {
       {
         label: t.co2Counter.subtitle,
         data: [data.co2Saved + 10, 10],
-        backgroundColor: ["#170456", "#2395FF"],
+        backgroundColor: ["#170456", "#8750E5"],
         borderWidth: 0,
-      }
-    ]
+      },
+    ],
   };
 
   const chartOptions = {
@@ -34,11 +34,8 @@ export default function CO2Chart({ data, t }) {
   };
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 card-hover fade-section">
-      <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
-        {t.co2Counter.title}
-      </h4>
-
+    <div className="card-tile card-hover fade-section">
+      <h4 className="section-headline">{t.co2Counter.title}</h4>
       <Bar data={chartData} options={chartOptions} />
     </div>
   );
