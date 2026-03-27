@@ -29,9 +29,10 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalHand * 6,
           data.totalHand * 12
         ],
-        borderColor: "#ef4444",
-        tension: 0.3,
-        fill: false,
+        borderColor: "#170456",
+        backgroundColor: "rgba(23,4,86,0.15)",
+        tension: 0.35,
+        fill: true,
       },
       {
         label: t.advancedChart.digital,
@@ -41,11 +42,21 @@ export default function AdvancedImpactChart({ data, t }) {
           data.totalDigital * 6,
           data.totalDigital * 12
         ],
-        borderColor: "#10b981",
-        tension: 0.3,
-        fill: false,
+        borderColor: "#2395FF",
+        backgroundColor: "rgba(35,149,255,0.15)",
+        tension: 0.35,
+        fill: true,
       }
     ]
+  };
+
+  const chartOptions = {
+    responsive: true,
+    plugins: { legend: { position: "bottom" } },
+    scales: {
+      y: { beginAtZero: true },
+      x: { grid: { display: false } }
+    }
   };
 
   return (
@@ -53,7 +64,8 @@ export default function AdvancedImpactChart({ data, t }) {
       <h4 className="text-xl font-bold text-intrumPurple mb-4 tracking-tight">
         {t.advancedChart.title}
       </h4>
-      <Line data={chartData} />
+
+      <Line data={chartData} options={chartOptions} />
     </div>
   );
 }
