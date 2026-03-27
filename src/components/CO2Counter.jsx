@@ -15,7 +15,7 @@ export default function CO2Counter({ data, t }) {
   }, [data]);
 
   return (
-    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 animate-fadeIn">
+    <div className="p-6 bg-white rounded-xl shadow-md border border-bgPurple20 fade-section">
       <h4 className="text-xl font-bold text-intrumPurple mb-2">
         {t.co2Counter.title}
       </h4>
