@@ -67,6 +67,19 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+/* Dashboard Background Effects */
+.dashboard-wrapper {
+  @apply min-h-screen bg-gray-50 relative overflow-hidden;
+}
+
+.dashboard-bg-glow {
+  @apply absolute w-[800px] h-[800px] bg-bgPurple40 blur-[120px] opacity-30 rounded-full -top-40 -left-40 pointer-events-none;
+}
+
+.dashboard-bg-gradient {
+  @apply absolute inset-0 bg-gradient-to-b from-transparent to-bgPurple20 opacity-60 pointer-events-none;
+}
+
 /* Utility Layout Classes */
 .section {
   @apply my-10 md:my-16;
