@@ -41,12 +41,12 @@ body {
   background-color: #8750e5;
 }
 
-/* Smooth UI Transitions */
+/* Smooth UI Animation */
 * {
   transition: all 0.15s ease-in-out;
 }
 
-/* Fade in */
+/* Fade In */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -65,14 +65,16 @@ body {
 .dashboard-wrapper {
   @apply min-h-screen bg-gray-50 relative overflow-hidden;
 }
+
 .dashboard-bg-glow {
   @apply absolute w-[800px] h-[800px] bg-bgPurple40 blur-[120px] opacity-30 rounded-full -top-40 -left-40 pointer-events-none;
 }
+
 .dashboard-bg-gradient {
   @apply absolute inset-0 bg-gradient-to-b from-transparent to-bgPurple20 opacity-60 pointer-events-none;
 }
 
-/* Premium Kachel / Tile Styles */
+/* Premium Tile (Kachel) Styles */
 .card-tile {
   @apply p-6 bg-white rounded-2xl shadow-md border border-bgPurple20;
 }
@@ -81,6 +83,7 @@ body {
   transition: transform 0.25s ease, box-shadow 0.25s ease;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
+
 .card-hover:hover {
   transform: translateY(-4px) scale(1.02);
   box-shadow:
@@ -98,6 +101,7 @@ body {
 .input-focus {
   transition: all 0.25s ease;
 }
+
 .input-focus:focus {
   box-shadow: 0 0 0 4px rgba(23, 4, 86, 0.25);
   border-color: #170456;
