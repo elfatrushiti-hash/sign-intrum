@@ -7,6 +7,7 @@ import Comparison from "./components/Comparison";
 import ChartsSection from "./components/ChartsSection";
 import AdvancedImpactChart from "./components/AdvancedImpactChart";
 import CO2Chart from "./components/CO2Chart";
+import CO2Counter from "./components/CO2Counter";
 import Footer from "./components/Footer";
 import AdminMode from "./components/AdminMode";
 import LanguageSwitcher from "./components/LanguageSwitcher";
@@ -17,7 +18,6 @@ export default function App() {
   const [language, setLanguage] = useState("de");
   const t = translations[language];
 
-  // ✅ Landing Page
   const [showLanding, setShowLanding] = useState(true);
 
   const [impactData, setImpactData] = useState({
@@ -31,7 +31,7 @@ export default function App() {
     co2Saved: 0
   });
 
-  // ✅ L A N D I N G P A G E
+  // ✅ Landing Page
   if (showLanding) {
     return (
       <LandingPage
@@ -43,7 +43,7 @@ export default function App() {
     );
   }
 
-  // ✅ D A S H B O A R D
+  // ✅ Dashboard Layout (Top / Mid / Lower Zones)
   return (
     <AdminMode t={t}>
       <div className="dashboard-wrapper">
@@ -53,31 +53,43 @@ export default function App() {
 
         <div className="container mx-auto p-6 relative z-10">
 
-          <LanguageSwitcher language={language} setLanguage={setLanguage} />
+          {/* ✅ Top Bar */}
+          <div className="flex justify-end mb-6">
+            <LanguageSwitcher language={language} setLanguage={setLanguage} />
+          </div>
 
+          {/* ✅ Hero */}
           <Hero t={t} />
 
-          <div className="my-6">
+          {/* ✅ TOP ZONE (3‑Column Grid) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-6">
             <Calculator
               impactData={impactData}
               setImpactData={setImpactData}
               t={t}
             />
+
+            <ChartsSection data={impactData} t={t} />
+
+            <KPISection data={impactData} t={t} />
           </div>
 
-          <KPISection data={impactData} t={t} />
-
+          {/* ✅ MID ZONE (2‑Column Grid) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
             <Benchmark data={impactData} t={t} />
             <Comparison data={impactData} t={t} />
           </div>
 
+          {/* ✅ LOWER ZONE (2‑Column Grid) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-6">
-            <ChartsSection data={impactData} t={t} />
-            <CO2Chart data={impactData} t={t} />
-          </div>
+            <AdvancedImpactChart data={impactData} t={t} />
 
-          <AdvancedImpactChart data={impactData} t={t} />
+            {/* CO₂ Chart + Counter kombiniert */}
+            <div className="flex flex-col gap-6">
+              <CO2Counter data={impactData} t={t} />
+              <CO2Chart data={impactData} t={t} />
+            </div>
+          </div>
 
           <Footer t={t} />
 
