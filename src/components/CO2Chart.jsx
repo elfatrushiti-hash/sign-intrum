@@ -24,19 +24,10 @@ export default function CO2Chart({ data, t }) {
     ],
   };
 
-  const chartOptions = {
-    responsive: true,
-    plugins: { legend: { position: "bottom" } },
-    scales: {
-      y: { beginAtZero: true },
-      x: { grid: { display: false } }
-    }
-  };
-
   return (
     <div className="card-tile card-hover fade-section">
       <h4 className="section-headline">{t.co2Counter.title}</h4>
-      <Bar data={chartData} options={chartOptions} />
+      <Bar id="co2-chart" data={chartData} options={{ responsive: true, plugins: { legend: { position: "bottom" } } }} />
     </div>
   );
 }
